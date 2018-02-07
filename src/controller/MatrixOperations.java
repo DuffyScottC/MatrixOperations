@@ -6,6 +6,7 @@
 package controller;
 
 import exceptions.MatrixFormatException;
+import exceptions.MatrixInvalidRowNumberException;
 import views.MatrixFrame;
 import views.NewMatrixDialog;
 import java.awt.CardLayout;
@@ -90,8 +91,17 @@ public class MatrixOperations {
             String secondString = frame.getAddSecondRowTextField().getText();
             int secondRowNumber = Integer.parseInt(secondString);
             
-            //perform the operation
-            String step = matrix.addRows(constant, firstRowNumber, secondRowNumber);
+            String step;
+            
+            try {
+                //perform the operation
+                step = matrix.addRows(constant, firstRowNumber, secondRowNumber);
+            } catch (MatrixInvalidRowNumberException ex) {
+                //tell the user what went wrong
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                //leave the method and allow the user to try again
+                return;
+            }
             //update the output
             addStepToOutput(step);
         });

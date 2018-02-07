@@ -132,9 +132,13 @@ public class Matrix {
      * @param firstRowNumber
      * @param secondRowNumber 
      * @return A text representation of the addition step in matrix notation
+     * @throws MatrixInvalidRowNumberException if the input row numbers are
+     * out of the bounds of the matrix's number of rows.
      */
-    public String addRows(int constant, int firstRowNumber, int secondRowNumber) {
+    public String addRows(int constant, int firstRowNumber, int secondRowNumber) 
+            throws MatrixInvalidRowNumberException {
         validateRowNumber(firstRowNumber);
+        validateRowNumber(secondRowNumber);
         int [] firstRow = numbers[firstRowNumber - 1];
         int [] secondRow = numbers[secondRowNumber - 1];
         for (int col = 0; col < c; col++) {
