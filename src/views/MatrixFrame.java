@@ -76,6 +76,7 @@ public class MatrixFrame extends javax.swing.JFrame {
         insertButton.setText("Insert");
         insertButton.setToolTipText("Insert another matrix");
 
+        outputTextArea.setEditable(false);
         outputTextArea.setColumns(20);
         outputTextArea.setRows(5);
         jScrollPane1.setViewportView(outputTextArea);
