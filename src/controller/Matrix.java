@@ -57,13 +57,8 @@ public class Matrix {
         Pattern p = Pattern.compile("[-0-9]+");
         //loop through the rows in inputRows (and in numbers)
         for (int row = 0; row < r; row++) {
-            try {
-                //fill in the current row
-                numbers[row] = fillRow(p, inputRows[row]);
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                throw new MatrixFormatException("Please make sure all rows"
-                        + " have the same number of columns.");
-            }
+            //fill in the current row
+            numbers[row] = fillRow(p, inputRows[row]);
         }
     }
     
@@ -72,8 +67,10 @@ public class Matrix {
      * @param p
      * @param inputRow
      * @return An array holding the numbers in the row
+     * @throws MatrixFormatException if a row has more or fewer numbers
+     * than the first row.
      */
-    private int[] fillRow(Pattern p, String inputRow) {
+    private int[] fillRow(Pattern p, String inputRow) throws MatrixFormatException {
         //start matching inputRow
         Matcher m = p.matcher(inputRow);
         //this keeps track of the current column in the row
@@ -86,10 +83,20 @@ public class Matrix {
             String stringNumber = m.group();
             //convert the sringNumber to an integer
             int number = Integer.parseInt(stringNumber);
-            //add the number to the current column in the row
-            rowNumbers[col] = number;
+            try {
+                //add the number to the current column in the row
+                rowNumbers[col] = number;
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                throw new MatrixFormatException("Please make sure all rows"
+                        + " have the same number of columns.");
+            }
             //increment column number
             col += 1;
+        }
+        //if there are fewer elements in rowNumbers than there should be
+        if (col < c-1) {
+            throw new MatrixFormatException("Please make sure all rows"
+                        + " have the same number of columns.");
         }
         //return the numbers in the row
         return rowNumbers;
@@ -98,10 +105,17 @@ public class Matrix {
     private int getNumberOfColumns(String rowOne) {
         //match any numbers (negative or positive) of one or more digits
         Pattern p = Pattern.compile("[-0-9]+");
-        //get the numbers in the row
-        int[] rowOneNumbers = fillRow(p, rowOne);
-        //return the number of numbers in the row
-        return rowOneNumbers.length;
+        try {
+            //get the numbers in the row
+            int [] rowOneNumbers = fillRow(p, rowOne);
+            //return the number of numbers in the row
+            return rowOneNumbers.length;
+        } catch (MatrixFormatException ex) {
+            System.err.println("Matrix.getNumberOfColumns() throw a"
+                    + "MatrixFormatException. This should not happen." + ex);
+        }
+        //this should also never happen
+        return 0;
     }
     
     /**
