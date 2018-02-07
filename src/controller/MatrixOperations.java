@@ -143,7 +143,7 @@ public class MatrixOperations {
             }
             
             //get the row number
-            String rowNumberString = frame.getMultiplyRowNumberTextField().getText();
+            String rowNumberString = frame.getMultiplyRowTextField().getText();
             int rowNumber = Integer.parseInt(rowNumberString);
             
             String step;
@@ -169,7 +169,7 @@ public class MatrixOperations {
             }
             
             //get the row number
-            String rowNumberString = frame.getDivideRowNumberTextField().getText();
+            String rowNumberString = frame.getDivideRowTextField().getText();
             int rowNumber = Integer.parseInt(rowNumberString);
             
             String step;
@@ -220,21 +220,21 @@ public class MatrixOperations {
             }
         });
         
-        frame.getMultiplyRowNumberTextField().addKeyListener(new KeyAdapter() {
+        frame.getMultiplyRowTextField().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 //get the text in the textfield
-                String rowNumber = frame.getMultiplyRowNumberTextField().getText();
+                String rowNumber = frame.getMultiplyRowTextField().getText();
                 //make the text in the label match
-                frame.getMultiplyRowNumberLabel().setText(rowNumber);
+                frame.getMultiplyRowLabel().setText(rowNumber);
             }
         });
         
-        frame.getDivideRowNumberTextField().addKeyListener(new KeyAdapter() {
+        frame.getDivideRowTextField().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 //get the text in the textfield
-                String rowNumber = frame.getDivideRowNumberTextField().getText();
+                String rowNumber = frame.getDivideRowTextField().getText();
                 //make the text in the label match
                 frame.getDivideRowNumberLabel().setText(rowNumber);
             }
@@ -253,10 +253,15 @@ public class MatrixOperations {
         frame.getAddConstantTextField().addFocusListener(selectOnClick);
         frame.getAddFirstRowTextField().addFocusListener(selectOnClick);
         frame.getAddSecondRowTextField().addFocusListener(selectOnClick);
+        
         frame.getSwapFirstRowTextField().addFocusListener(selectOnClick);
         frame.getSwapSecondRowTextField().addFocusListener(selectOnClick);
+        
         frame.getMultiplyConstantTextField().addFocusListener(selectOnClick);
-        frame.getMultiplyRowNumberTextField().addFocusListener(selectOnClick);
+        frame.getMultiplyRowTextField().addFocusListener(selectOnClick);
+        
+        frame.getDivideConstantTextField().addFocusListener(selectOnClick);
+        frame.getDivideRowTextField().addFocusListener(selectOnClick);
     }
 
     public static void main(String[] args) {

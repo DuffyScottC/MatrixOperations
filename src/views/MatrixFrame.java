@@ -58,14 +58,14 @@ public class MatrixFrame extends javax.swing.JFrame {
         multiplyPanel = new javax.swing.JPanel();
         multiplyConstantTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        multiplyRowNumberTextField = new javax.swing.JTextField();
+        multiplyRowTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        multiplyRowNumberLabel = new javax.swing.JLabel();
+        multiplyRowLabel = new javax.swing.JLabel();
         multiplyButton = new javax.swing.JButton();
         dividePanel = new javax.swing.JPanel();
         divideConstantTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        divideRowNumberTextField = new javax.swing.JTextField();
+        divideRowTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         divideRowNumberLabel = new javax.swing.JLabel();
         divideButton = new javax.swing.JButton();
@@ -197,17 +197,17 @@ public class MatrixFrame extends javax.swing.JFrame {
 
         jLabel7.setText("R");
 
-        multiplyRowNumberTextField.setColumns(1);
-        multiplyRowNumberTextField.setText("1");
-        multiplyRowNumberTextField.addActionListener(new java.awt.event.ActionListener() {
+        multiplyRowTextField.setColumns(1);
+        multiplyRowTextField.setText("1");
+        multiplyRowTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                multiplyRowNumberTextFieldActionPerformed(evt);
+                multiplyRowTextFieldActionPerformed(evt);
             }
         });
 
         jLabel8.setText("-> R");
 
-        multiplyRowNumberLabel.setText("1");
+        multiplyRowLabel.setText("1");
 
         multiplyButton.setText("Multiply");
 
@@ -221,11 +221,11 @@ public class MatrixFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(multiplyRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(multiplyRowTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(multiplyRowNumberLabel)
+                .addComponent(multiplyRowLabel)
                 .addContainerGap(268, Short.MAX_VALUE))
             .addGroup(multiplyPanelLayout.createSequentialGroup()
                 .addComponent(multiplyButton)
@@ -238,9 +238,9 @@ public class MatrixFrame extends javax.swing.JFrame {
                 .addGroup(multiplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(multiplyConstantTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(multiplyRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(multiplyRowTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(multiplyRowNumberLabel))
+                    .addComponent(multiplyRowLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(multiplyButton)
                 .addContainerGap(86, Short.MAX_VALUE))
@@ -252,11 +252,11 @@ public class MatrixFrame extends javax.swing.JFrame {
 
         jLabel9.setText(")R");
 
-        divideRowNumberTextField.setColumns(1);
-        divideRowNumberTextField.setText("1");
-        divideRowNumberTextField.addActionListener(new java.awt.event.ActionListener() {
+        divideRowTextField.setColumns(1);
+        divideRowTextField.setText("1");
+        divideRowTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                divideRowNumberTextFieldActionPerformed(evt);
+                divideRowTextFieldActionPerformed(evt);
             }
         });
 
@@ -283,7 +283,7 @@ public class MatrixFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(divideRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(divideRowTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -297,7 +297,7 @@ public class MatrixFrame extends javax.swing.JFrame {
                 .addGroup(dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(divideConstantTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(divideRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(divideRowTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(divideRowNumberLabel)
                     .addComponent(jLabel11))
@@ -345,13 +345,13 @@ public class MatrixFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void multiplyRowNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyRowNumberTextFieldActionPerformed
+    private void multiplyRowTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyRowTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_multiplyRowNumberTextFieldActionPerformed
+    }//GEN-LAST:event_multiplyRowTextFieldActionPerformed
 
-    private void divideRowNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideRowNumberTextFieldActionPerformed
+    private void divideRowTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideRowTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_divideRowNumberTextFieldActionPerformed
+    }//GEN-LAST:event_divideRowTextFieldActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -364,7 +364,7 @@ public class MatrixFrame extends javax.swing.JFrame {
     private javax.swing.JTextField divideConstantTextField;
     private javax.swing.JPanel dividePanel;
     private javax.swing.JLabel divideRowNumberLabel;
-    private javax.swing.JTextField divideRowNumberTextField;
+    private javax.swing.JTextField divideRowTextField;
     private javax.swing.JButton insertButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -381,8 +381,8 @@ public class MatrixFrame extends javax.swing.JFrame {
     private javax.swing.JButton multiplyButton;
     private javax.swing.JTextField multiplyConstantTextField;
     private javax.swing.JPanel multiplyPanel;
-    private javax.swing.JLabel multiplyRowNumberLabel;
-    private javax.swing.JTextField multiplyRowNumberTextField;
+    private javax.swing.JLabel multiplyRowLabel;
+    private javax.swing.JTextField multiplyRowTextField;
     private javax.swing.JPanel oparationCardPanel;
     private javax.swing.JComboBox<String> operationComboBox;
     private javax.swing.JTextArea outputTextArea;
@@ -445,12 +445,12 @@ public class MatrixFrame extends javax.swing.JFrame {
         return multiplyConstantTextField;
     }
 
-    public JTextField getMultiplyRowNumberTextField() {
-        return multiplyRowNumberTextField;
+    public JTextField getMultiplyRowTextField() {
+        return multiplyRowTextField;
     }
 
-    public JLabel getMultiplyRowNumberLabel() {
-        return multiplyRowNumberLabel;
+    public JLabel getMultiplyRowLabel() {
+        return multiplyRowLabel;
     }
 
     public JButton getInsertButton() {
@@ -469,8 +469,8 @@ public class MatrixFrame extends javax.swing.JFrame {
         return divideRowNumberLabel;
     }
 
-    public JTextField getDivideRowNumberTextField() {
-        return divideRowNumberTextField;
+    public JTextField getDivideRowTextField() {
+        return divideRowTextField;
     }
     
 }

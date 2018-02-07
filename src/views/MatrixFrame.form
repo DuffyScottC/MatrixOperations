@@ -295,11 +295,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="multiplyRowNumberTextField" min="-2" max="-2" attributes="0"/>
+                      <Component id="multiplyRowTextField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="multiplyRowNumberLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="multiplyRowLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="268" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -315,9 +315,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="multiplyConstantTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="multiplyRowNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="multiplyRowTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="multiplyRowNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="multiplyRowLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="multiplyButton" min="-2" max="-2" attributes="0"/>
@@ -337,13 +337,13 @@
                 <Property name="text" type="java.lang.String" value="R"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="multiplyRowNumberTextField">
+            <Component class="javax.swing.JTextField" name="multiplyRowTextField">
               <Properties>
                 <Property name="columns" type="int" value="1"/>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="multiplyRowNumberTextFieldActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="multiplyRowTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -351,7 +351,7 @@
                 <Property name="text" type="java.lang.String" value="-&gt; R"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="multiplyRowNumberLabel">
+            <Component class="javax.swing.JLabel" name="multiplyRowLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
@@ -384,7 +384,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="divideRowNumberTextField" min="-2" max="-2" attributes="0"/>
+                              <Component id="divideRowTextField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -402,7 +402,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="divideConstantTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="divideRowNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="divideRowTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="divideRowNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -425,13 +425,13 @@
                 <Property name="text" type="java.lang.String" value=")R"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="divideRowNumberTextField">
+            <Component class="javax.swing.JTextField" name="divideRowTextField">
               <Properties>
                 <Property name="columns" type="int" value="1"/>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="divideRowNumberTextFieldActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="divideRowTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
