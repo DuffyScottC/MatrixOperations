@@ -75,6 +75,10 @@ public class MatrixOperations {
             newMatrixDialog.setVisible(false);
         });
         
+        frame.getInsertButton().addActionListener((ActionEvent e) -> {
+            showAddMatrixDialog();
+        });
+        
         frame.getAddButton().addActionListener((ActionEvent e) -> {
             //get the constant
             String constantString = frame.getAddConstantTextField().getText();
