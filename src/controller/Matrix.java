@@ -45,37 +45,55 @@ public class Matrix {
         fillNumbers(inputRows);
     }
     
+    /**
+     * Takes the input numbers (the rows from the user input matrix) and adds
+     * the numbers to the {@link Matrix.numbers} array.
+     * @param inputRows An array of strings representing the rows
+     */
     private void fillNumbers(String[] inputRows) {
         Pattern p = Pattern.compile("[-0-9]+");
         //loop through the rows in inputRows (and in numbers)
         for (int row = 0; row < r; row++) {
-            Matcher m = p.matcher(inputRows[row]);
-            int col = 0;
-            while (m.find()) {
-                //get the current number
-                String stringNumber = m.group();
-                //convert the sringNumber to an integer
-                int number = Integer.parseInt(stringNumber);
-                //add the number to the numbers column
-                numbers[row][col] = number;
-                //increment column number
-                col += 1;
-            }
+            //fill in the current row
+            numbers[row] = fillRow(p, inputRows[row]);
         }
     }
     
-    private int getNumberOfColumns(String rowOne) {
-        Pattern p = Pattern.compile("[-0-9]+");
-        Matcher m = p.matcher(rowOne);
-        //counts the number of columns
-        int count = 0;
-        //loop through occurances
+    /**
+     * Places the numbers within the given row into an integer array. 
+     * @param p
+     * @param inputRow
+     * @return An array holding the numbers in the row
+     */
+    private int[] fillRow(Pattern p, String inputRow) {
+        //start matching inputRow
+        Matcher m = p.matcher(inputRow);
+        //this keeps track of the current column in the row
+        int col = 0;
+        //this holds the row numbers as they are found
+        int[] rowNumbers = new int[c];
+        //while we are finding more numbers
         while (m.find()) {
-            //count each occurance
-            count += 1;
+            //get the current number
+            String stringNumber = m.group();
+            //convert the sringNumber to an integer
+            int number = Integer.parseInt(stringNumber);
+            //add the number to the current column in the row
+            rowNumbers[col] = number;
+            //increment column number
+            col += 1;
         }
-        //return the number of columns
-        return count;
+        //return the numbers in the row
+        return rowNumbers;
+    }
+    
+    private int getNumberOfColumns(String rowOne) {
+        //match any numbers (negative or positive) of one or more digits
+        Pattern p = Pattern.compile("[-0-9]+");
+        //get the numbers in the row
+        int[] rowOneNumbers = fillRow(p, rowOne);
+        //return the number of numbers in the row
+        return rowOneNumbers.length;
     }
     
     /**
