@@ -111,19 +111,17 @@ public class Matrix {
     }
     
     private int getNumberOfColumns(String rowOne) {
-        //match any numbers (negative or positive) of one or more digits
         Pattern p = Pattern.compile("[-0-9]+");
-        try {
-            //get the numbers in the row
-            int [] rowOneNumbers = fillRow(p, rowOne);
-            //return the number of numbers in the row
-            return rowOneNumbers.length;
-        } catch (MatrixFormatException ex) {
-            System.err.println("Matrix.getNumberOfColumns() throw a"
-                    + "MatrixFormatException. This should not happen." + ex);
+        Matcher m = p.matcher(rowOne);
+        //counts the number of columns
+        int count = 0;
+        //loop through occurances
+        while (m.find()) {
+            //count each occurance
+            count += 1;
         }
-        //this should also never happen
-        return 0;
+        //return the number of columns
+        return count;
     }
     
     /**
