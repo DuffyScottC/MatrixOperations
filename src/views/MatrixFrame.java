@@ -34,6 +34,7 @@ public class MatrixFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        insertButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         outputTextArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
@@ -61,9 +62,18 @@ public class MatrixFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         multiplyRowNumberLabel = new javax.swing.JLabel();
         multiplyButton = new javax.swing.JButton();
-        insertButton = new javax.swing.JButton();
+        dividePanel = new javax.swing.JPanel();
+        divideConstantTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        divideRowNumberTextField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        divideRowNumberLabel = new javax.swing.JLabel();
+        divideButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        insertButton.setText("Insert");
+        insertButton.setToolTipText("Insert another matrix");
 
         outputTextArea.setColumns(20);
         outputTextArea.setRows(5);
@@ -237,8 +247,60 @@ public class MatrixFrame extends javax.swing.JFrame {
 
         oparationCardPanel.add(multiplyPanel, "Multiply");
 
-        insertButton.setText("Insert");
-        insertButton.setToolTipText("Insert another matrix");
+        divideConstantTextField.setColumns(1);
+
+        jLabel9.setText("R");
+
+        divideRowNumberTextField.setColumns(1);
+        divideRowNumberTextField.setText("1");
+        divideRowNumberTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                divideRowNumberTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("-> R");
+
+        divideRowNumberLabel.setText("1");
+
+        divideButton.setText("Divide");
+
+        javax.swing.GroupLayout dividePanelLayout = new javax.swing.GroupLayout(dividePanel);
+        dividePanel.setLayout(dividePanelLayout);
+        dividePanelLayout.setHorizontalGroup(
+            dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dividePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dividePanelLayout.createSequentialGroup()
+                        .addComponent(divideConstantTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(divideRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(divideRowNumberLabel))
+                    .addComponent(divideButton))
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
+        dividePanelLayout.setVerticalGroup(
+            dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dividePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(divideConstantTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(divideRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(divideRowNumberLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(divideButton)
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
+        oparationCardPanel.add(dividePanel, "Divide");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -281,6 +343,10 @@ public class MatrixFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_multiplyRowNumberTextFieldActionPerformed
 
+    private void divideRowNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideRowNumberTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_divideRowNumberTextFieldActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -288,8 +354,14 @@ public class MatrixFrame extends javax.swing.JFrame {
     private javax.swing.JTextField addFirstRowTextField;
     private javax.swing.JPanel addPanel;
     private javax.swing.JTextField addSecondRowTextField;
+    private javax.swing.JButton divideButton;
+    private javax.swing.JTextField divideConstantTextField;
+    private javax.swing.JPanel dividePanel;
+    private javax.swing.JLabel divideRowNumberLabel;
+    private javax.swing.JTextField divideRowNumberTextField;
     private javax.swing.JButton insertButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -297,6 +369,7 @@ public class MatrixFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton multiplyButton;
     private javax.swing.JTextField multiplyConstantTextField;
@@ -375,6 +448,22 @@ public class MatrixFrame extends javax.swing.JFrame {
 
     public JButton getInsertButton() {
         return insertButton;
+    }
+
+    public JButton getDivideButton() {
+        return divideButton;
+    }
+
+    public JTextField getDivideConstantTextField() {
+        return divideConstantTextField;
+    }
+
+    public JLabel getDivideRowNumberLabel() {
+        return divideRowNumberLabel;
+    }
+
+    public JTextField getDivideRowNumberTextField() {
+        return divideRowNumberTextField;
     }
     
 }

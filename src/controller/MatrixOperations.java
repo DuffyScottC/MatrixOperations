@@ -39,7 +39,8 @@ public class MatrixOperations {
     private final String[] operationsList = {
             "Add",
             "Swap",
-            "Multiply"
+            "Multiply",
+            "Divide"
         };
     
     public MatrixOperations() {
