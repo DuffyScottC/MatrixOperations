@@ -9,7 +9,8 @@ import views.MatrixFrame;
 import views.NewMatrixDialog;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -145,7 +146,7 @@ public class MatrixOperations {
     private void addActionListenersToTextFields() {
         frame.getAddSecondRowTextField().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 //get the text in the addSecondRowTextField
                 String rowNumber = frame.getAddSecondRowTextField().getText();
                 //make the text in the secondRowLabel match
@@ -153,9 +154,9 @@ public class MatrixOperations {
             }
         });
         
-        frame.getMultiplyRowNumberLabel().addKeyListener(new KeyAdapter() {
+        frame.getMultiplyRowNumberTextField().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 //get the text in the textfield
                 String rowNumber = frame.getMultiplyRowNumberTextField().getText();
                 //make the text in the label match
@@ -163,20 +164,23 @@ public class MatrixOperations {
             }
         });
         
-        ActionListener selectOnClick = (ActionEvent e) -> {
-            //get the textfield that called this listener
-            JTextField textField = (JTextField) e.getSource();
-            //select all the text
-            textField.selectAll();
+        FocusAdapter selectOnClick = new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                //get the textfield that called this listener
+                JTextField textField = (JTextField) e.getSource();
+                //select all the text
+                textField.selectAll();
+            }
         };
         
-        frame.getAddConstantTextField().addActionListener(selectOnClick);
-        frame.getAddFirstRowTextField().addActionListener(selectOnClick);
-        frame.getAddSecondRowTextField().addActionListener(selectOnClick);
-        frame.getSwapFirstRowTextField().addActionListener(selectOnClick);
-        frame.getSwapSecondRowTextField().addActionListener(selectOnClick);
-        frame.getMultiplyConstantTextField().addActionListener(selectOnClick);
-        frame.getMultiplyRowNumberTextField().addActionListener(selectOnClick);
+        frame.getAddConstantTextField().addFocusListener(selectOnClick);
+        frame.getAddFirstRowTextField().addFocusListener(selectOnClick);
+        frame.getAddSecondRowTextField().addFocusListener(selectOnClick);
+        frame.getSwapFirstRowTextField().addFocusListener(selectOnClick);
+        frame.getSwapSecondRowTextField().addFocusListener(selectOnClick);
+        frame.getMultiplyConstantTextField().addFocusListener(selectOnClick);
+        frame.getMultiplyRowNumberTextField().addFocusListener(selectOnClick);
     }
 
     public static void main(String[] args) {
