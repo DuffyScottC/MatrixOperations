@@ -63,9 +63,15 @@ public class MatrixOperations {
         newMatrixDialog.getAddButton().addActionListener((ActionEvent e) -> {
             //get the user input
             String input = newMatrixDialog.getNewMatrixTextArea().getText();
+            String step = "Starting Matrix";
             try {
-                //assign the matrix
-                matrix = new Matrix(input);
+                //if this is the first time we are adding a matrix
+                if (matrix == null) {
+                    //assign the matrix
+                    matrix = new Matrix(input);
+                } else { //if we are currently working on a matrix
+                    step = matrix.insert(input);
+                }
             } catch (MatrixFormatException ex) {
                 //tell the user what went wrong
                 JOptionPane.showMessageDialog(frame, ex.getMessage());
@@ -73,12 +79,25 @@ public class MatrixOperations {
                 return;
             }
             //add the matrix to the output window
-            addStepToOutput("Matrix");
+            addStepToOutput(step);
             newMatrixDialog.setVisible(false);
         });
         
         frame.getInsertButton().addActionListener((ActionEvent e) -> {
             showAddMatrixDialog();
+        });
+        
+        frame.getUndoButton().addActionListener((ActionEvent e) -> {
+            String step;
+            try {
+                step = matrix.undo();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                //leave
+                return;
+            }
+            //update the output
+            addStepToOutput(step);
         });
         
         frame.getAddButton().addActionListener((ActionEvent e) -> {

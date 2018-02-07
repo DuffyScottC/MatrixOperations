@@ -7,6 +7,7 @@ package controller;
 
 import exceptions.MatrixFormatException;
 import exceptions.MatrixInvalidRowNumberException;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +30,8 @@ public class Matrix {
      * The number of columns in the matrix
      */
     private int c;
+    private final Stack<int[][]> undoNumbersStack = new Stack();
+    private final Stack<String> undoStepDescStack = new Stack();
     
     /**
      * 
@@ -41,8 +44,7 @@ public class Matrix {
         //get the lines of the user input
         String[] inputRows = input.split(System.getProperty("line.separator"));
         if (inputRows.length == 0) {
-            System.out.println("Please write the matrix in the box");
-            return;
+            throw new MatrixFormatException("Please write a matrix in the box");
         }
         //get the number of rows
         r = inputRows.length;
@@ -52,6 +54,68 @@ public class Matrix {
         numbers = new int[r][c];
         //fill in numbers
         fillNumbers(inputRows);
+    }
+    
+    /**
+     * Replace the current numbers with the newly inserted matrix
+     * @param input The user inserted matrix
+     * @return A string representation of the insert step
+     * @throws MatrixFormatException if the matrix input by the user is not in
+     * the right format. This ensures for the rest of the methods that all rows
+     * have the same number of columns, etc.
+     */
+    public String insert(String input) throws MatrixFormatException {
+        //get the lines of the user input
+        String[] inputRows = input.split(System.getProperty("line.separator"));
+        if (inputRows.length == 0) {
+            throw new MatrixFormatException("Please write a matrix in the box");
+        }
+        //get the number of rows
+        int newR = inputRows.length;
+        //check if the number of rows is the same as the original matrix
+        if (newR != r) {
+            throw new MatrixFormatException("Please write " + r + "rows to"
+                    + "match the current matrix.");
+        }
+        //get the number of colums in row 1
+        int newC = getNumberOfColumns(inputRows[0]);
+        //check if the number of rows is the same as the original matrix
+        if (newC != c) {
+            throw new MatrixFormatException("Please write " + c + "columns to"
+                    + "match the current matrix.");
+        }
+        String step = "Insert Matrix";
+        storeCurrentState(step); //store current state of numbers
+        //initialize numbers to be a new empty int[][] array
+        numbers = new int[r][c];
+        //fill in numbers
+        fillNumbers(inputRows);
+        //output the text representation of the insert step
+        return step;
+    }
+    
+    /**
+     * Undo the last operation.
+     * @return A text description of the undo step.
+     * @throws Exception If there is nothing to undo.
+     */
+    public String undo() throws Exception {
+        if (undoNumbersStack.isEmpty()) {
+            throw new Exception("Nothing to undo.");
+        }
+        //pop the last version of numbers
+        int[][] oldNumbers = undoNumbersStack.pop();
+        //replace the current numbers with the old numbers
+        numbers = oldNumbers;
+        //pop the last step description
+        String oldStep = undoStepDescStack.pop();
+        //return the text description of the undo step
+        return "Undo " + oldStep;
+    }
+    
+    private void storeCurrentState(String step) {
+        undoNumbersStack.add(numbers.clone());
+        undoStepDescStack.add(step);
     }
     
     /**
@@ -137,6 +201,9 @@ public class Matrix {
             throws MatrixInvalidRowNumberException {
         validateRowNumber(firstRowNumber);
         validateRowNumber(secondRowNumber);
+        String step = constant + "R" + firstRowNumber + " + R" + secondRowNumber
+                + " -> R" + secondRowNumber;
+        storeCurrentState(step); //store current state of numbers
         int [] firstRow = numbers[firstRowNumber - 1];
         int [] secondRow = numbers[secondRowNumber - 1];
         for (int col = 0; col < c; col++) {
@@ -145,8 +212,7 @@ public class Matrix {
             //replace the old number with the new number
             secondRow[col] = newNumber;
         }
-        return constant + "R" + firstRowNumber + " + R" + secondRowNumber
-                + " -> R" + secondRowNumber;
+        return step;
     }
     
     /**
@@ -161,11 +227,13 @@ public class Matrix {
             throws MatrixInvalidRowNumberException {
         validateRowNumber(firstRowNumber);
         validateRowNumber(secondRowNumber);
+        String step = "R" + firstRowNumber + " <-> R" + secondRowNumber;
+        storeCurrentState(step); //store current state of numbers
         int [] firstRow = numbers[firstRowNumber - 1];
         int [] secondRow = numbers[secondRowNumber - 1];
         numbers[firstRowNumber - 1] = secondRow;
         numbers[secondRowNumber - 1] = firstRow;
-        return "R" + firstRowNumber + " <-> R" + secondRowNumber;
+        return step;
     }
     
     /**
@@ -180,6 +248,8 @@ public class Matrix {
     public String multiplyRow(int constant, int rowNumber) 
             throws MatrixInvalidRowNumberException {
         validateRowNumber(rowNumber);
+        String step = constant + "R" + rowNumber + "-> R" + rowNumber;
+        storeCurrentState(step); //store current state of numbers
         //get the row to be multiplied
         int [] row = numbers[rowNumber - 1];
         for (int col = 0; col < c; col++) {
@@ -188,7 +258,7 @@ public class Matrix {
             //replace the old number
             row[col] = newNumber;
         }
-        return constant + "R" + rowNumber + "-> R" + rowNumber;
+        return step;
     }
     
     /**
@@ -203,6 +273,8 @@ public class Matrix {
     public String divideRow(int constant, int rowNumber) 
             throws MatrixInvalidRowNumberException {
         validateRowNumber(rowNumber);
+        String step = "(1/" + constant + ")R" + rowNumber + "-> R" + rowNumber;
+        storeCurrentState(step); //store current state of numbers
         //get the row to be divided
         int [] row = numbers[rowNumber - 1];
         for (int col = 0; col < c; col++) {
@@ -211,7 +283,7 @@ public class Matrix {
             //replace the old number
             row[col] = newNumber;
         }
-        return "(1/" + constant + ")R" + rowNumber + "-> R" + rowNumber;
+        return step;
     }
     
     /**
