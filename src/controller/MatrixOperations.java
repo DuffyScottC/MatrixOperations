@@ -72,7 +72,8 @@ public class MatrixOperations {
                 //leave the method and allow the user to try again
                 return;
             }
-            outputTextArea.setText(matrix.toString());
+            //add the matrix to the output window
+            addStepToOutput("Matrix");
             newMatrixDialog.setVisible(false);
         });
         
