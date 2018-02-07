@@ -156,8 +156,13 @@ public class Matrix {
      * @param firstRowNumber
      * @param secondRowNumber
      * @return A text representation of the swap step in matrix notation
+     * @throws MatrixInvalidRowNumberException if the input row numbers are
+     * out of the bounds of the matrix's number of rows.
      */
-    public String swapRows(int firstRowNumber, int secondRowNumber) {
+    public String swapRows(int firstRowNumber, int secondRowNumber) 
+            throws MatrixInvalidRowNumberException {
+        validateRowNumber(firstRowNumber);
+        validateRowNumber(secondRowNumber);
         int [] firstRow = numbers[firstRowNumber - 1];
         int [] secondRow = numbers[secondRowNumber - 1];
         numbers[firstRowNumber - 1] = secondRow;
@@ -165,7 +170,18 @@ public class Matrix {
         return "R" + firstRowNumber + " <-> R" + secondRowNumber;
     }
     
-    public String multiplyRow(int constant, int rowNumber) {
+    /**
+     * Multiply the specified row by the specified constant and replace that
+     * row with its new version.
+     * @param constant
+     * @param rowNumber
+     * @return A text representation of the multiply step in matrix notation
+     * @throws MatrixInvalidRowNumberException if the input row numbers are
+     * out of the bounds of the matrix's number of rows.
+     */
+    public String multiplyRow(int constant, int rowNumber) 
+            throws MatrixInvalidRowNumberException {
+        validateRowNumber(rowNumber);
         //get the row to be multiplied
         int [] row = numbers[rowNumber - 1];
         for (int col = 0; col < c; col++) {

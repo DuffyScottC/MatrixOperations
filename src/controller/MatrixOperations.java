@@ -115,8 +115,16 @@ public class MatrixOperations {
             String secondString = frame.getSwapSecondRowTextField().getText();
             int secondRowNumber = Integer.parseInt(secondString);
             
-            //perform the operation
-            String step = matrix.swapRows(firstRowNumber, secondRowNumber);
+            String step;
+            try {
+                //perform the operation
+                step = matrix.swapRows(firstRowNumber, secondRowNumber);
+            } catch (MatrixInvalidRowNumberException ex) {
+                //tell the user what went wrong
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                //leave the method and allow the user to try again
+                return;
+            }
             //update the output
             addStepToOutput(step);
         });
@@ -133,8 +141,16 @@ public class MatrixOperations {
             String rowNumberString = frame.getMultiplyRowNumberTextField().getText();
             int rowNumber = Integer.parseInt(rowNumberString);
             
-            //perform the operation
-            String step = matrix.multiplyRow(constant, rowNumber);
+            String step;
+            try {
+                //perform the operation
+                step = matrix.multiplyRow(constant, rowNumber);
+            } catch (MatrixInvalidRowNumberException ex) {
+                //tell the user what went wrong
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                //leave the method and allow the user to try again
+                return;
+            }
             //update the output
             addStepToOutput(step);
         });
