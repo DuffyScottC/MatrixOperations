@@ -192,6 +192,29 @@ public class Matrix {
     }
     
     /**
+     * Divide the specified row by the specified constant and replace that
+     * row with its new version.
+     * @param constant
+     * @param rowNumber
+     * @return A text representation of the divide step in matrix notation
+     * @throws MatrixInvalidRowNumberException if the input row numbers are
+     * out of the bounds of the matrix's number of rows.
+     */
+    public String divideRow(int constant, int rowNumber) 
+            throws MatrixInvalidRowNumberException {
+        validateRowNumber(rowNumber);
+        //get the row to be divided
+        int [] row = numbers[rowNumber - 1];
+        for (int col = 0; col < c; col++) {
+            //get the new number
+            int newNumber = row[col]/constant;
+            //replace the old number
+            row[col] = newNumber;
+        }
+        return "(1/" + constant + ")R" + rowNumber + "-> R" + rowNumber;
+    }
+    
+    /**
      * Checks to make sure the row is within the range of 1-{@link r}.
      * @param row
      * @throws MatrixInvalidRowNumberException If the input row is not within

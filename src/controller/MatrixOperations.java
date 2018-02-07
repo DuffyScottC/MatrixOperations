@@ -160,6 +160,32 @@ public class MatrixOperations {
             addStepToOutput(step);
         });
         
+        frame.getDivideButton().addActionListener((ActionEvent e) -> {
+            //get the constant
+            String constantString = frame.getDivideConstantTextField().getText();
+            int constant = 1;
+            if (!constantString.equals("")) {
+                constant = Integer.parseInt(constantString);
+            }
+            
+            //get the row number
+            String rowNumberString = frame.getDivideRowNumberTextField().getText();
+            int rowNumber = Integer.parseInt(rowNumberString);
+            
+            String step;
+            try {
+                //perform the operation
+                step = matrix.divideRow(constant, rowNumber);
+            } catch (MatrixInvalidRowNumberException ex) {
+                //tell the user what went wrong
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                //leave the method and allow the user to try again
+                return;
+            }
+            //update the output
+            addStepToOutput(step);
+        });
+        
         showAddMatrixDialog();
     }
     
@@ -201,6 +227,16 @@ public class MatrixOperations {
                 String rowNumber = frame.getMultiplyRowNumberTextField().getText();
                 //make the text in the label match
                 frame.getMultiplyRowNumberLabel().setText(rowNumber);
+            }
+        });
+        
+        frame.getDivideRowNumberTextField().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //get the text in the textfield
+                String rowNumber = frame.getDivideRowNumberTextField().getText();
+                //make the text in the label match
+                frame.getDivideRowNumberLabel().setText(rowNumber);
             }
         });
         

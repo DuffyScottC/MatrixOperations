@@ -69,6 +69,7 @@ public class MatrixFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         divideRowNumberLabel = new javax.swing.JLabel();
         divideButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,7 +250,7 @@ public class MatrixFrame extends javax.swing.JFrame {
 
         divideConstantTextField.setColumns(1);
 
-        jLabel9.setText("R");
+        jLabel9.setText(")R");
 
         divideRowNumberTextField.setColumns(1);
         divideRowNumberTextField.setText("1");
@@ -265,6 +266,8 @@ public class MatrixFrame extends javax.swing.JFrame {
 
         divideButton.setText("Divide");
 
+        jLabel11.setText("(1/");
+
         javax.swing.GroupLayout dividePanelLayout = new javax.swing.GroupLayout(dividePanel);
         dividePanel.setLayout(dividePanelLayout);
         dividePanelLayout.setHorizontalGroup(
@@ -272,7 +275,10 @@ public class MatrixFrame extends javax.swing.JFrame {
             .addGroup(dividePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(divideButton)
                     .addGroup(dividePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(divideConstantTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
@@ -281,9 +287,8 @@ public class MatrixFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(divideRowNumberLabel))
-                    .addComponent(divideButton))
-                .addContainerGap(268, Short.MAX_VALUE))
+                        .addComponent(divideRowNumberLabel)))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         dividePanelLayout.setVerticalGroup(
             dividePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +299,8 @@ public class MatrixFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(divideRowNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(divideRowNumberLabel))
+                    .addComponent(divideRowNumberLabel)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(divideButton)
                 .addContainerGap(86, Short.MAX_VALUE))
@@ -362,6 +368,7 @@ public class MatrixFrame extends javax.swing.JFrame {
     private javax.swing.JButton insertButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
