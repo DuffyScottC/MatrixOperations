@@ -5,6 +5,7 @@
  */
 package controller;
 
+import exceptions.MatrixFormatException;
 import views.MatrixFrame;
 import views.NewMatrixDialog;
 import java.awt.CardLayout;
@@ -15,6 +16,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -57,12 +59,19 @@ public class MatrixOperations {
         });
         
         newMatrixDialog.getAddButton().addActionListener((ActionEvent e) -> {
-            newMatrixDialog.setVisible(false);
             //get the user input
             String input = newMatrixDialog.getNewMatrixTextArea().getText();
-            //assign the matrix
-            matrix = new Matrix(input);
+            try {
+                //assign the matrix
+                matrix = new Matrix(input);
+            } catch (MatrixFormatException ex) {
+                //tell the user what went wrong
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                //leave the method and allow the user to try again
+                return;
+            }
             outputTextArea.setText(matrix.toString());
+            newMatrixDialog.setVisible(false);
         });
         
         frame.getAddButton().addActionListener((ActionEvent e) -> {

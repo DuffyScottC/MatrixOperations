@@ -5,6 +5,7 @@
  */
 package controller;
 
+import exceptions.MatrixFormatException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +29,7 @@ public class Matrix {
      */
     private int c;
 
-    public Matrix(String input) {
+    public Matrix(String input) throws MatrixFormatException {
         //get the lines of the user input
         String[] inputRows = input.split(System.getProperty("line.separator"));
         if (inputRows.length == 0) {
@@ -47,15 +48,22 @@ public class Matrix {
     
     /**
      * Takes the input numbers (the rows from the user input matrix) and adds
-     * the numbers to the {@link Matrix.numbers} array.
+     * the numbers to the {@link numbers} array.
      * @param inputRows An array of strings representing the rows
+     * @throws MatrixFormatException if a row has more or fewer numbers
+     * than the first row.
      */
-    private void fillNumbers(String[] inputRows) {
+    private void fillNumbers(String[] inputRows) throws MatrixFormatException {
         Pattern p = Pattern.compile("[-0-9]+");
         //loop through the rows in inputRows (and in numbers)
         for (int row = 0; row < r; row++) {
-            //fill in the current row
-            numbers[row] = fillRow(p, inputRows[row]);
+            try {
+                //fill in the current row
+                numbers[row] = fillRow(p, inputRows[row]);
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                throw new MatrixFormatException("Please make sure all rows"
+                        + " have the same number of columns.");
+            }
         }
     }
     
