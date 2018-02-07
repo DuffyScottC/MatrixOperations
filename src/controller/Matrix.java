@@ -6,6 +6,7 @@
 package controller;
 
 import exceptions.MatrixFormatException;
+import exceptions.MatrixInvalidRowNumberException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +29,14 @@ public class Matrix {
      * The number of columns in the matrix
      */
     private int c;
-
+    
+    /**
+     * 
+     * @param input
+     * @throws MatrixFormatException if the matrix input by the user is not in
+     * the right format. This ensures for the rest of the methods that all rows
+     * have the same number of columns, etc.
+     */
     public Matrix(String input) throws MatrixFormatException {
         //get the lines of the user input
         String[] inputRows = input.split(System.getProperty("line.separator"));
@@ -126,6 +134,7 @@ public class Matrix {
      * @return A text representation of the addition step in matrix notation
      */
     public String addRows(int constant, int firstRowNumber, int secondRowNumber) {
+        validateRowNumber(firstRowNumber);
         int [] firstRow = numbers[firstRowNumber - 1];
         int [] secondRow = numbers[secondRowNumber - 1];
         for (int col = 0; col < c; col++) {
@@ -162,6 +171,20 @@ public class Matrix {
             row[col] = newNumber;
         }
         return constant + "R" + rowNumber + "-> R" + rowNumber;
+    }
+    
+    /**
+     * Checks to make sure the row is within the range of 1-{@link r}.
+     * @param row
+     * @throws MatrixInvalidRowNumberException If the input row is not within
+     * the range of 1-{@link r}
+     */
+    private void validateRowNumber(int row) throws MatrixInvalidRowNumberException {
+        //if the row is out of the bounds
+        if (row < 1 || row > r) {
+            throw new MatrixInvalidRowNumberException("Please use a row"
+                    + "number between 1 and " + r);
+        }
     }
 
     @Override
