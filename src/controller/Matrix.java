@@ -114,7 +114,16 @@ public class Matrix {
     }
     
     private void storeCurrentState(String step) {
-        undoNumbersStack.add(numbers.clone());
+        int[][] currentNumbersCopy = new int[r][c];
+        //loop through currentNumbersCopy row by row and column by column
+        for (int row = 0; row < r; row++) {
+            for (int col = 0; col < c; col++) {
+                //set the currentNumbersCopy num to the matching one in numbers
+                currentNumbersCopy[row][col] = numbers[row][col];
+            }
+        }
+        //add the currentNumbersCopy to the undoNumbersStack
+        undoNumbersStack.add(currentNumbersCopy);
         undoStepDescStack.add(step);
     }
     
