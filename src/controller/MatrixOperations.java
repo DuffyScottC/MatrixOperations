@@ -103,9 +103,9 @@ public class MatrixOperations {
         frame.getAddButton().addActionListener((ActionEvent e) -> {
             //get the constant
             String constantString = frame.getAddConstantTextField().getText();
-            int constant = 1;
+            double constant = 1;
             if (!constantString.equals("")) {
-                constant = Integer.parseInt(constantString);
+                constant = Double.parseDouble(constantString);
             }
             
             //get the first row number
@@ -157,9 +157,9 @@ public class MatrixOperations {
         frame.getMultiplyButton().addActionListener((ActionEvent e) -> {
             //get the constant
             String constantString = frame.getMultiplyConstantTextField().getText();
-            int constant = 1;
+            double constant = 1;
             if (!constantString.equals("")) {
-                constant = Integer.parseInt(constantString);
+                constant = Double.parseDouble(constantString);
             }
             
             //get the row number
@@ -183,9 +183,9 @@ public class MatrixOperations {
         frame.getDivideButton().addActionListener((ActionEvent e) -> {
             //get the constant
             String constantString = frame.getDivideConstantTextField().getText();
-            int constant = 1;
+            double constant = 1;
             if (!constantString.equals("")) {
-                constant = Integer.parseInt(constantString);
+                constant = Double.parseDouble(constantString);
             }
             
             //get the row number
