@@ -41,6 +41,10 @@ public class Matrix {
      * have the same number of columns, etc.
      */
     public Matrix(String input) throws MatrixFormatException {
+        //to deal with the formatting of webassign.net, I must
+        //replace this strange − character that looks exactly like
+        //- but is not regocnized as a negative sign:
+        input = input.replaceAll("[−]", "-");
         //get the lines of the user input
         String[] inputRows = input.split(System.getProperty("line.separator"));
         if (inputRows.length == 0) {
@@ -315,7 +319,8 @@ public class Matrix {
         for (int row = 0; row < r; row++) {
             s.append("|");
             for (int col = 0; col < c; col++) {
-                s.append(numbers[row][col]);
+                String formattedNumber = fmt(numbers[row][col]);
+                s.append(formattedNumber);
                 //if this is not the last column
                 if (col < c - 1) {
                     s.append("\t"); //spaces between columns
@@ -324,6 +329,19 @@ public class Matrix {
             s.append("|\n"); //new line for new row
         }
         return s.toString();
+    }
+    
+    /**
+     * From https://stackoverflow.com/questions/703396/how-to-nicely-format-floating-numbers-to-string-without-unnecessary-decimal-0
+     * @param d
+     * @return 
+     */
+    public static String fmt(double d) {
+        if(d == (long) d) {
+            return String.format("%d",(long)d);
+        } else {
+            return String.format("%s",d);
+        }
     }
 
 }
